@@ -13,7 +13,6 @@ jobs:
   deploy_web_component:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 80
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     environment: Production
 
@@ -32,7 +31,6 @@ jobs:
           publish-dir: packages/notification-center/dist/umd
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: prod
-          production-deploy: true
           alias: prod
           github-deployment-environment: Production
           github-deployment-description: Notification Center Web Component Deployment
